@@ -10,11 +10,11 @@
     <template #overview>
       <a-card :body-style="{height: '124px'}">
         <a-typography-title :level="4" ellipsis>
-          <img src="https://gitee.com/static/images/logo.svg?t=158106664" alt="" style="height: 40px" v-if="themeStore.isDarkTheme">
-          <img src="https://gitee.com/static/images/logo-black.svg?t=158106664" alt="" style="height: 40px" v-else>
+          <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="" style="height: 40px" v-if="themeStore.isDarkTheme">
+          <img src="https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png" alt="" style="height: 40px" v-else>
           码云主页
         </a-typography-title>
-        <a-typography-text type="secondary" ellipsis>Yukino/狸花猫</a-typography-text>
+        <a-typography-text type="secondary" ellipsis>ZJHAO/ZJHAO-Noda</a-typography-text>
       </a-card>
     </template>
   </expandable-card>
@@ -24,7 +24,8 @@ import ExpandableCard from "@/components/expandable-card/index.vue";
 import {useThemeStore} from "@/stores/theme.ts";
 const themeStore = useThemeStore();
 const handleClick = () => {
-  window.open('https://gitee.com/yukino_git/lihua')
+  // window.open('https://gitee.com/yukino_git/lihua')
+  window.open('https://github.com/ZJHAO233/ZJHAO-Noda')
 }
 </script>
 <style scoped>

@@ -1,4 +1,4 @@
- # 系统配置
+# 系统配置
 lihua:
   # 系统版本
   version: 1.2.2
@@ -15,11 +15,15 @@ lihua:
   # 文件上传服务类型：LOCAL（传统本地上传）、MINIO（Minio对象存储）
   uploadFileModel: LOCAL
   # 公开文件的业务编码，publicLocalDownload 中判断包含业务编码的文件才会进行返回
-  uploadPublicBusinessCode: [UserAvatar, SystemNotice]
+  uploadPublicBusinessCode: [ UserAvatar, SystemNotice ]
   # 上传文件路径 mac windows 注意目录切换
-  uploadFilePath: /Users/yukino/my-project/data/lihua/
+  # uploadFilePath: /Users/yukino/my-project/data/lihua/
+  uploadFilePath: E:/Temp/lihua/data/lihua
+
   # 文件导出路径
-  exportFilePath: /Users/yukino/my-project/data/lihua/export/
+  # exportFilePath: /Users/yukino/my-project/data/lihua/export/
+  exportFilePath: E:/Temp/lihua/data/lihua/export
+
 
 spring:
   # 数据源配置
@@ -30,7 +34,7 @@ spring:
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/lihua
+          url: jdbc:mysql://192.168.150.101:13306/lihua-demo
           username: root
           password: 123456
           hikari:
@@ -44,28 +48,29 @@ spring:
             idle-timeout: 120000
             # 连接生命时长（毫秒）
             max-lifetime: 1800000
-# 多数据源配置，使用dynamic-datasource实现，具体文档请参考：https://www.kancloud.cn/tracy5546/dynamic-datasource/2264611
-#        slave_1:
-#          driver-class-name: com.mysql.cj.jdbc.Driver
-#          url: jdbc:mysql://localhost:3306/dynamic
-#          username: root
-#          password: 123456
-#          hikari:
-#            # 最大连接数默认 10
-#            maximum-pool-size: 30
-#            # 最小空闲连接 默认10
-#            minimum-idle: 30
-#            # 等待连接池连接最大时长（毫秒）
-#            connection-timeout: 5000
-#            # 空闲连接最大时长（毫秒）
-#            idle-timeout: 0
-#            # 连接生命时长（毫秒）
-#            max-lifetime: 25800
+  # 多数据源配置，使用dynamic-datasource实现，具体文档请参考：https://www.kancloud.cn/tracy5546/dynamic-datasource/2264611
+  #        slave_1:
+  #          driver-class-name: com.mysql.cj.jdbc.Driver
+  #          url: jdbc:mysql://localhost:3306/dynamic
+  #          username: root
+  #          password: 123456
+  #          hikari:
+  #            # 最大连接数默认 10
+  #            maximum-pool-size: 30
+  #            # 最小空闲连接 默认10
+  #            minimum-idle: 30
+  #            # 等待连接池连接最大时长（毫秒）
+  #            connection-timeout: 5000
+  #            # 空闲连接最大时长（毫秒）
+  #            idle-timeout: 0
+  #            # 连接生命时长（毫秒）
+  #            max-lifetime: 25800
   # redis配置
   data:
     redis:
-      host: 127.0.0.1
-      port: 6379
+      host: 192.168.150.101
+      port: 16379
+      password: 123456
       # 读取超时
       timeout: 3000
       # 连接超时
@@ -85,7 +90,9 @@ spring:
 # 日志配置
 logging:
   file:
-    name: /Users/yukino/my-project/data/lihua/logs/lihua.log
+    # name: /Users/yukino/my-project/data/lihua/logs/lihua.log
+    name: E:\Temp\lihua\data\lihua\logs\lihua.log
+
   level:
     com.lihua: debug
     org.springframework: info
@@ -94,7 +101,7 @@ xxl-job:
   # 是否启用定时任务
   enable: false
   # 调度中心部署地址
-  adminAddress: http://127.0.0.1:8081/xxl-job-admin
+  adminAddress: http://192.168.150.101:18081/xxl-job-admin
   # 执行器通讯token
   accessToken: default_token
   # 执行器应用名称
@@ -106,7 +113,8 @@ xxl-job:
   # 执行器端口号
   port: 0
   # 执行器日志保存目录
-  logPath: D:/home/lihua/job-logs
+  # logPath: D:/home/lihua/job-logs
+  logPath: E:/Temp/lihua/data/lihua/job-logs
   # 执行器日志保存天数
   logRetentionDays: 30
 
@@ -117,7 +125,7 @@ minio:
   secretKey: 123456789
   bucketName: lihua-bucket
 
- # springdoc-openapi项目配置
+  # springdoc-openapi项目配置
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
@@ -125,7 +133,7 @@ springdoc:
     operations-sorter: alpha
   api-docs:
     path: /v3/api-docs
- # knife4j的增强配置，不需要增强可以不配
+  # knife4j的增强配置，不需要增强可以不配
 knife4j:
   enable: true
   setting:
